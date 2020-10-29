@@ -16,6 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.Duration;
 import java.time.Instant;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Optional;
@@ -111,12 +112,17 @@ public class QueryLogListenerTest {
 
     private QueryMetadata prepareQueryMetadata() {
         return new QueryMetadata(
-                "queryId", Optional.empty(),
+                "queryId",
+                Optional.empty(),
                 "query",
+                Optional.empty(),
                 Optional.of("preparedQuery"),
                 "queryState",
+                Collections.emptyList(),
+                Collections.emptyList(),
                 URI.create("http://localhost"),
-                Optional.empty(), Optional.empty()
+                Optional.empty(),
+                Optional.empty()
         );
     }
 
@@ -124,11 +130,22 @@ public class QueryLogListenerTest {
         return new QueryContext(
                 "user",
                 Optional.of("principal"),
-                Optional.empty(), Optional.empty(), Optional.empty(),
-                Optional.empty(), new HashSet<>(), new HashSet<>(), Optional.empty(), Optional.empty(),
-                Optional.empty(), Optional.empty(), new HashMap<>(),
+                Optional.empty(),
+                Optional.empty(),
+                Optional.empty(),
+                Optional.empty(),
+                new HashSet<>(),
+                new HashSet<>(),
+                Optional.empty(),
+                Optional.empty(),
+                Optional.empty(),
+                Optional.empty(),
+                new HashMap<>(),
                 new ResourceEstimates(Optional.empty(), Optional.empty(), Optional.of(1000L)),
-                "serverAddress", "serverVersion", "environment"
+                "serverAddress",
+                "serverVersion",
+                "environment",
+                Optional.empty()
         );
     }
 }
